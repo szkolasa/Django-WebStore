@@ -1,7 +1,30 @@
-﻿{% include 'base.html' %}
+{% include 'base.html' %}
 
 {% block content %}
 
-fdsfds
+<div class="container p-3">
+    <h2>{{ title }}</h2>
+    <hr />
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">Email:</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="id_password">Haslo:</label>
+            {{ form.password }}
+        </div>
+
+        {% if form.errors %}
+            <p class="alert alert-danger">Zly login lub haslo</p>
+        {% endif %}
+
+        <div class="text-right">
+            <a role="button" class="btn btn-default" href="{% url 'account:register' %}">Rejestracja</a>
+            <button type="submit" class="btn btn-primary">Zaloguj</button>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

@@ -32,6 +32,9 @@
   <ItemGroup>
     <Compile Include="account\admin.py" />
     <Compile Include="account\apps.py" />
+    <Compile Include="account\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="account\migrations\__init__.py" />
     <Compile Include="account\models.py" />
     <Compile Include="account\tests.py" />
@@ -58,8 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="account\templates\account\login.html" />
+    <Content Include="account\templates\account\register.html" />
     <Content Include="requirements.txt" />
-    <Content Include="static\content\site.css" />
+    <Content Include="staticfiles\css\site.css" />
     <Content Include="store\templates\store\home.html" />
     <Content Include="templates\base.html" />
   </ItemGroup>
@@ -68,11 +72,11 @@
     <Folder Include="account\migrations\" />
     <Folder Include="account\templates\" />
     <Folder Include="account\templates\account\" />
+    <Folder Include="staticfiles\css\" />
     <Folder Include="templates\" />
     <Folder Include="store\" />
     <Folder Include="store\migrations\" />
-    <Folder Include="static\" />
-    <Folder Include="static\content\" />
+    <Folder Include="staticfiles\" />
     <Folder Include="store\templates\" />
     <Folder Include="store\templates\store\" />
     <Folder Include="WebStore\" />
