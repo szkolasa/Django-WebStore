@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="pt-2">
+    <h2>{{ title }}</h2>
+    <hr />
+
+    <div class="row">
+        {% include 'profile/menu.html' %}
+        <div class="col-md-9">
+            <div class="d-flex flex-column flex-md-row align-content-start flex-wrap shipping-cards">
+                {% for s in shipments %}
+                    <div class="card bg-light mx-2">
+                        <div class="card-header">{{ s.name }}</div>
+                        <div class="card-body">
+                            {{ s.first_name }} {{ s.last_name }}<br>
+                            {{ s.street }} {{ s.house_number }} {% if s.flat_number %}m. {{ s.flat_number }} {% endif %}<br>
+                            {{ s.zip_code }} {{ s.city }}<br>
+                            {{ s.phone_number }}
+                        </div>
+                        <div class="card-footer text-right">
+                            <a class="fa fa-lg fa-edit nav-link" href="{% url 'profile:editshipment' s.id %}"></a>
+                            <a class="fa fa-lg fa-trash nav-link" href="{% url 'profile:deleteshipment' s.id %}"></a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <a role="button" class="btn btn-outline-dark" style="width: 64px; height: 64px" href="{% url 'profile:addshipment' %}">
+                    <i class="fa fa-3x fa-plus m-auto"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

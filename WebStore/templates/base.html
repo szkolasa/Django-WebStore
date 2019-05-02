@@ -21,15 +21,15 @@
             <button class="navbar-toggler pull-left order-1 order-md-1" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Otwórz menu">
                 <span class="fa fa-bars"></span>
             </button>
-            <a class="navbar-brand order-2 order-md-2" href="/">WebStore</a>
-            <div class="collapse navbar-collapse order-5 order-md-3" id="menu">
+            <a class="navbar-brand order-2 order-md-2" href="{% url 'store:home' %}">WebStore</a>
+            <div class="collapse navbar-collapse order-6 order-md-3" id="menu">
                 <div class="navbar-nav">
                     <a class="nav-link" href="/Category/Index/183943e9-0f6b-416f-e178-08d58658b16a">Elektronika</a>
                 </div>
             </div>
             <div class="ml-auto mr-4 order-3 order-md-4">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'account:home' %}" class="fa fa-lg fa-user nav-link"></a>
+                    <a href="{% url 'profile:home' %}" class="fa fa-lg fa-user nav-link"></a>
                 {% else %}
                     <a href="{% url 'account:login' %}" class="fa fa-lg fa-user nav-link"></a>
                 {% endif %}

@@ -44,6 +44,19 @@
     <Compile Include="account\views.py" />
     <Compile Include="account\__init__.py" />
     <Compile Include="manage.py" />
+    <Compile Include="profile\admin.py" />
+    <Compile Include="profile\apps.py" />
+    <Compile Include="profile\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="profile\migrations\__init__.py" />
+    <Compile Include="profile\models.py" />
+    <Compile Include="profile\tests.py" />
+    <Compile Include="profile\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="profile\views.py" />
+    <Compile Include="profile\__init__.py" />
     <Compile Include="store\admin.py" />
     <Compile Include="store\apps.py" />
     <Compile Include="store\migrations\__init__.py" />
@@ -62,6 +75,13 @@
   <ItemGroup>
     <Content Include="account\templates\account\login.html" />
     <Content Include="account\templates\account\register.html" />
+    <Content Include="profile\templates\profile\addShipment.html" />
+    <Content Include="profile\templates\profile\changePassword.html" />
+    <Content Include="profile\templates\profile\changeEmail.html" />
+    <Content Include="profile\templates\profile\editShipment.html" />
+    <Content Include="profile\templates\profile\home.html" />
+    <Content Include="profile\templates\profile\menu.html" />
+    <Content Include="profile\templates\profile\shipments.html" />
     <Content Include="requirements.txt" />
     <Content Include="staticfiles\css\site.css" />
     <Content Include="store\templates\store\home.html" />
@@ -72,6 +92,10 @@
     <Folder Include="account\migrations\" />
     <Folder Include="account\templates\" />
     <Folder Include="account\templates\account\" />
+    <Folder Include="profile\" />
+    <Folder Include="profile\migrations\" />
+    <Folder Include="profile\templates\" />
+    <Folder Include="profile\templates\profile\" />
     <Folder Include="staticfiles\css\" />
     <Folder Include="templates\" />
     <Folder Include="store\" />

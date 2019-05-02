@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'store',
     'account',
+    'profile',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',
@@ -119,3 +120,4 @@ STATICFILES_DIRS = [
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 LOGIN_URL = '/account/login'
+LOGIN_REDIRECT_URL = 'store:home'
