@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "{% url 'store:cartitems' %}"
+        }).done(function (data) {
+            for (let key in data) {
+                let item = data[key];
+                $('.cart-content').append(
+                    `<div class="row">
+                        <div class="col-2 item-${key}"></div>
+                        <div class="col-3">${item.price} PLN</div>
+                        <div class="col-2">
+                            <a class="btn btn-default fa fa-minus-square" href="/cart/decqty/${key}"></a>
+                            ${item.quantity}
+                            <a class="btn btn-default fa fa-plus-square" href="/cart/incqty/${key}"></a>
+                        </div>
+                        <div class="col-4">${item.price * item.quantity} PLN</div>
+                        <div class="col-1"><a class="btn btn-default fa fa-trash" href="/cart/remove/${key}"></a></div>
+                    </div>`
+                );
+
+                $.ajax({
+                    url: `/product/name/${key}`
+                }).done(function (name) {
+                    $('.item-' + key).html(name)
+                })
+            }
+        })
+    });
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="m-md-4 my-4">       
+    <h2>{{ title }}</h2>
+    <hr />
+        <div class="row">
+            <div class="col-2">Nazwa</div>
+            <div class="col-3">Cena</div>
+            <div class="col-2">Ilosc</div>
+            <div class="col-4">Wartosc</div>
+        </div>
+        <hr />
+        <div class="cart-content">
+
+        </div>
+    <hr />
+    <div class="text-right">
+        <a class="btn btn-primary" href="{% url 'store:order' %}">Zamow</a>
+    </div>
+</div>
+
+{% endblock %}

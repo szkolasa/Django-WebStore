@@ -59,6 +59,9 @@
     <Compile Include="profile\__init__.py" />
     <Compile Include="store\admin.py" />
     <Compile Include="store\apps.py" />
+    <Compile Include="store\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="store\migrations\__init__.py" />
     <Compile Include="store\models.py" />
     <Compile Include="store\tests.py" />
@@ -67,6 +70,19 @@
     </Compile>
     <Compile Include="store\views.py" />
     <Compile Include="store\__init__.py" />
+    <Compile Include="store_admin\admin.py" />
+    <Compile Include="store_admin\apps.py" />
+    <Compile Include="store_admin\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="store_admin\migrations\__init__.py" />
+    <Compile Include="store_admin\models.py" />
+    <Compile Include="store_admin\tests.py" />
+    <Compile Include="store_admin\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="store_admin\views.py" />
+    <Compile Include="store_admin\__init__.py" />
     <Compile Include="WebStore\__init__.py" />
     <Compile Include="WebStore\settings.py" />
     <Compile Include="WebStore\urls.py" />
@@ -84,7 +100,22 @@
     <Content Include="profile\templates\profile\shipments.html" />
     <Content Include="requirements.txt" />
     <Content Include="staticfiles\css\site.css" />
+    <Content Include="store\templates\store\cart.html" />
+    <Content Include="store\templates\store\category.html" />
     <Content Include="store\templates\store\home.html" />
+    <Content Include="store\templates\store\order.html" />
+    <Content Include="store\templates\store\product.html" />
+    <Content Include="store\templates\store\productList.html" />
+    <Content Include="store_admin\templates\store_admin\addCategory.html" />
+    <Content Include="store_admin\templates\store_admin\addProduct.html" />
+    <Content Include="store_admin\templates\store_admin\categories.html" />
+    <Content Include="store_admin\templates\store_admin\editCategory.html" />
+    <Content Include="store_admin\templates\store_admin\editProduct.html" />
+    <Content Include="store_admin\templates\store_admin\editUser.html" />
+    <Content Include="store_admin\templates\store_admin\home.html" />
+    <Content Include="store_admin\templates\store_admin\products.html" />
+    <Content Include="store_admin\templates\store_admin\users.html" />
+    <Content Include="templates\admin.html" />
     <Content Include="templates\base.html" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +128,10 @@
     <Folder Include="profile\templates\" />
     <Folder Include="profile\templates\profile\" />
     <Folder Include="staticfiles\css\" />
+    <Folder Include="store_admin\" />
+    <Folder Include="store_admin\migrations\" />
+    <Folder Include="store_admin\templates\" />
+    <Folder Include="store_admin\templates\store_admin\" />
     <Folder Include="templates\" />
     <Folder Include="store\" />
     <Folder Include="store\migrations\" />

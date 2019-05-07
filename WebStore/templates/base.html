@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {% load staticfiles %}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "{% url 'store:menu' %}"
+            }).done(function (data) {
+                data.forEach(element => {
+                    $('nav .navbar-nav').append('<a class="nav-link" href="/category/' + element[0] + '">' + element[1] + '</a>');
+                });
+            });
+
+            $.ajax({
+                url: "{% url 'store:cartcount' %}"
+            }).done(function (data) {
+                $('#cart-badge').html(data > 99 ? "99+" : data);
+            });
+        })
+    </script>
+    {% block scripts %}{% endblock %}
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -23,9 +41,7 @@
             </button>
             <a class="navbar-brand order-2 order-md-2" href="{% url 'store:home' %}">WebStore</a>
             <div class="collapse navbar-collapse order-6 order-md-3" id="menu">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="/Category/Index/183943e9-0f6b-416f-e178-08d58658b16a">Elektronika</a>
-                </div>
+                <div class="navbar-nav"></div>
             </div>
             <div class="ml-auto mr-4 order-3 order-md-4">
                 {% if user.is_authenticated %}
@@ -35,7 +51,7 @@
                 {% endif %}
             </div>
             <div class="mr-3 order-4 order-md-5">
-                <a class="nav-link" href="/Cart">
+                <a class="nav-link" href="{% url 'store:cart' %}">
                     <div class="row">
                         <i class="fa fa-lg fa-shopping-bag col-6"></i><span id="cart-badge" class="badge badge-pill badge-secondary col-6 d-none d-md-block">0</span>
                     </div>

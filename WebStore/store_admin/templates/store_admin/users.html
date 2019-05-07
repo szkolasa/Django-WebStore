@@ -1,0 +1,33 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+
+    <table class="table table-striped table-borderless">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Imie</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">Rola</th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+          <tr>
+              <td>{{ u.username }}</td>
+              <td>{{ u.first_name }}</td>
+              <td>{{ u.last_name }}</td>
+              <td>{% if u.is_superuser %}Superuser{% elif u.groups.exists %}{{ u.groups.first.name }}{% else %}Klient{% endif %}</td>
+              <td>
+                  {% if not u.is_superuser and u.id != request.user.id %}
+                    <a class="btn" href="{% url 'store_admin:edituser' u.id %}"><i class="fa fa-edit"></i></a>
+                    <a class="btn" href="{% url 'store_admin:deleteuser' u.id %}"><i class="fa fa-trash"></i></a>
+                  {% endif %}
+              </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %}

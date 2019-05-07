@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <h4>
-        <a data-toggle="collapse" href="#account-collapser" aria-expanded="false" aria-controls="account-collapser" class="">Moje dane</a>
+        <a data-toggle="collapse" href="#account-collapser" aria-expanded="false" aria-controls="account-collapser" class="nav-link">Moje dane</a>
     </h4>
     <ul class="nav flex-column collapse" id="account-collapser">
         <li class="nav-item">
@@ -13,4 +13,9 @@
             <a class="nav-link" href="{% url 'profile:shipments' %}">Adresy dostawy</a>
         </li>
     </ul>
+    {% if request.user.groups.all or request.user.is_superuser %}
+        <h4>
+            <a class="nav-link" href="{% url 'store_admin:home' %}">Administracja</a>
+        </h4>
+    {% endif %}
 </div>

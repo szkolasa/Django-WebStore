@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="mt-3">
+    <div class="text-center">
+        <span class="h2">{{ title }}</span>
+    </div>
+
+    <div class="d-flex flex-column flex-md-row align-content-start flex-wrap">
+        {% for c in categories %}
+            <div class="col-md-4 col-xl-3 p-2 category">
+                <a class="nav-link" href="{% url 'store:category' c.id %}">
+                    <div class="text-center bg-light">
+                        <div class="p-3 text-dark">
+                            <h5>{{ c.name }}</h5>
+                        </div>
+                        <div>
+                            <img src="/Category/CategoryImage/27e2aac5-0153-4d8c-e179-08d58658b16a" alt="category image" width="200" height="200">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

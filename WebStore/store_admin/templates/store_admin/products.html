@@ -1,0 +1,33 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+
+<div class="text-right">
+    <a class="nav-link fa fa-3x fa-plus" href="{% url 'store_admin:addproduct' %}"></a>
+</div>
+
+<table class="table table-striped table-borderless">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Kategoria</th>
+        <th scope="col">Dodane przez</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in products %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.category.name }}</td>
+            <td>{{ p.added_by.username }}</td>
+            <td>
+                <a class="btn" href="{% url 'store_admin:editproduct' p.id %}"><i class="fa fa-edit"></i></a>
+                <a class="btn" href="{% url 'store_admin:deleteproduct' p.id %}"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

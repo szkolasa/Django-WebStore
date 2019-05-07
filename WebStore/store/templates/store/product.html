@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="m-md-4 my-4">       
+    <h2>{{ product.name }}</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="h4">{{ product.price }} PLN</div>
+                <a class="nav-link btn btn-primary" href="{% url 'store:addtocart' product.id %}">Do koszyka</a>
+        </div>
+    </div>
+    <div class="h1 text-center">Opis</div>
+    {{ product.description }}
+</div>
+
+{% endblock %}
