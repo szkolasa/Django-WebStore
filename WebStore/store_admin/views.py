@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from store_admin.models import Category, Product
 from store_admin.forms import AdminUserEditForm, AdminAddCategoryForm, AdminEditCategoryForm, AdminAddProductForm, AdminEditProductForm
 
+from store.models import Order, OrderItem
+
 # Create your views here.
 
 def is_admin(user):
@@ -270,3 +272,41 @@ def editproduct(request, id):
                 'form': form
             }
         )
+
+@login_required
+@user_passes_test(is_special)
+def orders(request):
+    assert isinstance(request, HttpRequest)
+
+    user = request.user
+    orders = Order.objects.all()
+
+    return render(
+        request,
+        'store_admin/orders.html',
+        {
+            'title': 'Zamowienia',
+            'orders': orders
+        }
+    )
+
+@login_required
+@user_passes_test(is_special)
+def orderdetails(request, id):
+    assert isinstance(request, HttpRequest)
+
+    order = Order.objects.filter(id=id).first()
+
+    if not order:
+        return HttpResponseNotFound()
+
+    items = OrderItem.objects.filter(order = order).all()
+
+    return render(
+        request,
+        'store_admin/orderDetails.html',
+        {
+            'title': 'Szczegoly zamowienia',
+            'items': items
+        }
+    )

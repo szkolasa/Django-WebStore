@@ -1,6 +1,7 @@
 from django.core import serializers
 from django.http import HttpRequest, JsonResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
+from django.db.models import F
 
 from store_admin.models import Category, Product
 from profile.models import Address
@@ -12,13 +13,14 @@ from store.forms import OrderForm
 
 def home(request):
     assert isinstance(request, HttpRequest)
-    cart = Cart(request=request)
-    cart.count()
+    products = Product.objects.order_by(F('id').desc()).all()[:16]
+
     return render(
         request,
         'store/home.html',
         {
-            'title': 'Home'
+            'title': 'Home',
+            'products': products,
         }
     )
 
@@ -155,9 +157,20 @@ def order(request):
 
     if request.method == 'POST':
         form = OrderForm(user=request.user, data=request.POST)
+        cart = Cart(request=request)
+        if form.is_valid():
+            form.save(cart=cart)
+            cart.clear()
+            return redirect('store:ordercreated')
 
-
-        return redirect('order:created')
+        return render(
+            request,
+            'store/order.html',
+            {
+                'title': 'Dane do wysylki',
+                'form': form,
+            }
+        )
     else:
         form = OrderForm(user=request.user)
         return render(
@@ -178,3 +191,14 @@ def getaddress(request, id):
         return JsonResponse(ret, safe=False)
 
     return JsonResponse('', safe=False)
+
+def ordercreated(request):
+    assert isinstance(request, HttpRequest)
+
+    return render(
+        request,
+        'store/orderCreated.html',
+        {
+            'title': 'Zamowienie zostalo dodane',
+        }
+    )

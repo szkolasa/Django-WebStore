@@ -9,7 +9,76 @@
     <div class="row">
         {% include 'profile/menu.html' %}
         <div class="col-md-9">
-            content
+            <div class="d-flex flex-column flex-md-row align-content-start flex-wrap">
+                <div class="col-md-4 col-xl-3 p-2 category">
+                    <a class="nav-link" href="{% url 'profile:addshipment' %}">
+                        <div class="text-center bg-light">
+                            <div class="p-3 text-dark">
+                                <h5>Dodaj adres</h5>
+                            </div>
+                            <div class="pb-4">
+                                <i class="fa fa-5x fa-dolly"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-xl-3 p-2 category">
+                    <a class="nav-link" href="{% url 'profile:changeemail' %}">
+                        <div class="text-center bg-light">
+                            <div class="p-3 text-dark">
+                                <h5>Zmien email</h5>
+                            </div>
+                            <div class="pb-4">
+                                <i class="fa fa-5x fa-envelope-open"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-xl-3 p-2 category">
+                    <a class="nav-link" href="{% url 'profile:changepassword' %}">
+                        <div class="text-center bg-light">
+                            <div class="p-3 text-dark">
+                                <h5>Zmien haslo</h5>
+                            </div>
+                            <div class="pb-4">
+                                <i class="fa fa-5x fa-user-shield"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-xl-3 p-2 category">
+                    <a class="nav-link" href="{% url 'profile:myorders' %}">
+                        <div class="text-center bg-light">
+                            <div class="p-3 text-dark">
+                                <h5>Moje zamowienia</h5>
+                            </div>
+                            <div class="pb-4">
+                                <i class="fa fa-5x fa-box-open"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {% if request.user.groups.all or request.user.is_superuser %}
+
+                <div class="col-md-4 col-xl-3 p-2 category">
+                    <a class="nav-link" href="{% url 'store_admin:home' %}">
+                        <div class="text-center bg-light">
+                            <div class="p-3 text-dark">
+                                <h5>Administracja</h5>
+                            </div>
+                            <div class="pb-4">
+                                <i class="fa fa-5x fa-lock"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

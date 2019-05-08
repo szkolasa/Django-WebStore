@@ -97,6 +97,8 @@
     <Content Include="profile\templates\profile\editShipment.html" />
     <Content Include="profile\templates\profile\home.html" />
     <Content Include="profile\templates\profile\menu.html" />
+    <Content Include="profile\templates\profile\orderDetails.html" />
+    <Content Include="profile\templates\profile\orders.html" />
     <Content Include="profile\templates\profile\shipments.html" />
     <Content Include="requirements.txt" />
     <Content Include="staticfiles\css\site.css" />
@@ -104,6 +106,7 @@
     <Content Include="store\templates\store\category.html" />
     <Content Include="store\templates\store\home.html" />
     <Content Include="store\templates\store\order.html" />
+    <Content Include="store\templates\store\orderCreated.html" />
     <Content Include="store\templates\store\product.html" />
     <Content Include="store\templates\store\productList.html" />
     <Content Include="store_admin\templates\store_admin\addCategory.html" />
@@ -113,6 +116,8 @@
     <Content Include="store_admin\templates\store_admin\editProduct.html" />
     <Content Include="store_admin\templates\store_admin\editUser.html" />
     <Content Include="store_admin\templates\store_admin\home.html" />
+    <Content Include="store_admin\templates\store_admin\orderDetails.html" />
+    <Content Include="store_admin\templates\store_admin\orders.html" />
     <Content Include="store_admin\templates\store_admin\products.html" />
     <Content Include="store_admin\templates\store_admin\users.html" />
     <Content Include="templates\admin.html" />

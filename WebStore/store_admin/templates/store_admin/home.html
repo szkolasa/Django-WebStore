@@ -2,6 +2,59 @@
 
 {% block content %}
 
-test
+<div class="d-flex flex-column flex-md-row align-content-start flex-wrap">
+    <div class="col-md-4 col-xl-3 p-2 category">
+        <a class="nav-link" href="{% url 'store_admin:users' %}">
+            <div class="text-center bg-light">
+                <div class="p-3 text-dark">
+                    <h5>Uzytkownicy</h5>
+                </div>
+                <div class="pb-4">
+                    <i class="fa fa-5x fa-users"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4 col-xl-3 p-2 category">
+        <a class="nav-link" href="{% url 'store_admin:categories' %}">
+            <div class="text-center bg-light">
+                <div class="p-3 text-dark">
+                    <h5>Kategorie</h5>
+                </div>
+                <div class="pb-4">
+                    <i class="fa fa-5x fa-object-group"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4 col-xl-3 p-2 category">
+        <a class="nav-link" href="{% url 'store_admin:products' %}">
+            <div class="text-center bg-light">
+                <div class="p-3 text-dark">
+                    <h5>Produkty</h5>
+                </div>
+                <div class="pb-4">
+                    <i class="fa fa-5x fa-barcode"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4 col-xl-3 p-2 category">
+        <a class="nav-link" href="{% url 'store_admin:orders' %}">
+            <div class="text-center bg-light">
+                <div class="p-3 text-dark">
+                    <h5>Zamowienia</h5>
+                </div>
+                <div class="pb-4">
+                    <i class="fa fa-5x fa-truck"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
 
 {% endblock %}

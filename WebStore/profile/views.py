@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from profile.forms import AccountChangePasswordForm, AccountChangeEmailForm, AccountShipmentForm, AccountEditShipmentForm
 from profile.models import Address
+from store.models import Order, OrderItem
 
 # Create your views here.
 
@@ -177,3 +178,40 @@ def editshipment(request, id):
             )
     else:
         return HttpResponseNotFound()
+
+@login_required
+def myorders(request):
+    assert isinstance(request, HttpRequest)
+
+    user = request.user
+    orders = Order.objects.filter(user=user).all()
+
+    return render(
+        request,
+        'profile/orders.html',
+        {
+            'title': 'Moje zamowienia',
+            'orders': orders
+        }
+    )
+
+@login_required
+def orderdetails(request, id):
+    assert isinstance(request, HttpRequest)
+
+    user = request.user
+    order = Order.objects.filter(id=id, user=user).first()
+
+    if not order:
+        return HttpResponseNotFound()
+
+    items = OrderItem.objects.filter(order = order).all()
+
+    return render(
+        request,
+        'profile/orderDetails.html',
+        {
+            'title': 'Szczegoly zamowienia',
+            'items': items
+        }
+    )
