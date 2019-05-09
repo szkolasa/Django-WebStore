@@ -1,1 +1,1 @@
-web: gunicorn webstore.wsgi --access-logfile -
+web: gunicorn store:store
