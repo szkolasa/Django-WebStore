@@ -43,6 +43,8 @@ class AdminAddCategoryForm(forms.Form):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.user = user
+        self.choice_list = [(0, '')] + list(((c.id, str(c.name)) for c in Category.objects.all()))
+        self.fields['parent_category'].choices = self.choice_list
 
     def save(self, commit=True):
         name = self.cleaned_data.get('name')
