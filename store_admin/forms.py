@@ -26,6 +26,8 @@ class AdminUserEditForm(forms.Form):
         user = User.objects.filter(id=self.cleaned_data.get('user_id')).first()
         user.groups.clear()
         group_id = int(self.cleaned_data.get('group'))
+        self.choice_list = [(0, '')] + list(((g.id, str(g.name)) for g in Group.objects.all()))
+        self.fields['group'].choices = self.choice_list
 
         if commit:
             group = Group.objects.filter(id=group_id).first()
