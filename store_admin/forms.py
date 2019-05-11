@@ -111,6 +111,8 @@ class AdminAddProductForm(forms.Form):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.user = user
+        self.category_list = list((c.id, c.name) for c in Category.objects.exclude(parent_category=None).all())
+        self.fields['category'].choices = self.category_list
 
     def save(self, commit=True):
         category_id = int(self.cleaned_data.get('category'))
